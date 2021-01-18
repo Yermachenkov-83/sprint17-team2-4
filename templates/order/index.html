@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-6">
+                <h1>{{ title }}</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+    {% if orders %}
+        <table class="table table-dark table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Пользователь</th>
+                    <th scope="col">Книга</th>
+                    <th scope="col">Заказ Создан</th>
+                    <th scope="col">Необходимо вернуть к</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td><a href="{% url 'order' order.id %}" class="text-decoration-none">
+                                {{ order.id }}
+                            </a></td>
+                        <td>{{ order.user.last_name }} {{ order.user.first_name }}  ({{ order.user.email }}) </td>
+                        <td>{{ order.book.name }}</td>
+                        <td>{{ order.created_at }}</td>
+                        <td>{{ order.end_at }}</td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            В библиотеке нет активных пользователей...
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}
