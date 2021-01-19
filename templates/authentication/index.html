@@ -23,6 +23,7 @@
                     <th scope="col">Фамилия</th>
                     <th scope="col">Имя</th>
                     <th scope="col">Отчество</th>
+                    <th scope="col">Действия</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,15 +36,26 @@
                         <td>{{ user.last_name }}</td>
                         <td>{{ user.first_name }}</td>
                         <td>{{ user.middle_name }}</td>
+<td>
+            <a href="{%url 'edit' user.id%}"><button type="button" class="btn btn-link">Edit</button><a/>
+            <br>
+            <form action="{% url 'delete' user.id %}" method="post">
+    {% csrf_token %}<button type="submit" class="btn btn-link">Delete</button></form>
+                        </td>
+</tr>
 
-                    </tr>
                 {% endfor %}
+
+
             </tbody>
+
         </table>
+
     {% else %}
         <div class="alert alert-warning" role="alert">
             В библиотеке нет активных пользователей...
         </div>
     {% endif %}
+        <a href="{%url 'create'%}"><button type="button" class="btn btn-primary btn-lg">Add</button></a>
     </div>
 {% endblock %}
