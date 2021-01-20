@@ -40,9 +40,9 @@
                         <td>{{ order.created_at }}</td>
                         <td>{{ order.end_at }}</td>
                         <td>
-            <a href="{%url 'edit' order.id%}"><button type="button" class="btn btn-link">Edit</button><a/>
+            <a href="{%url 'edit_order' order.id%}"><button type="button" class="btn btn-link">Edit</button><a/>
             <br>
-            <form action="{% url 'delete' order.id %}" method="post">
+            <form action="{% url 'delete_order' order.id %}" method="post">
     {% csrf_token %}<button type="submit" class="btn btn-link">Delete</button></form>
                         </td>
 
@@ -55,6 +55,6 @@
             В библиотеке нет активных пользователей...
         </div>
     {% endif %}
-        <a href="{%url 'add'%}"><button type="button" class="btn btn-primary btn-lg">Add</button></a>
+        <a href="{%url 'add_order'%}"><button type="button" class="btn btn-primary btn-lg">Add</button></a>
     </div>
 {% endblock %}

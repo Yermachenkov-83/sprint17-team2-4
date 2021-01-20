@@ -86,7 +86,6 @@ DATABASES = {
     }
 }
 #USE_L10N = False
-#DATETIME_FORMAT = r'j \d\e F \d\e Y'
 
 
 

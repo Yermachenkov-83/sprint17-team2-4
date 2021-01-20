@@ -4,9 +4,12 @@ from authentication.models import CustomUser
 from author.models import Author
 from book.models import Book
 import datetime
+from django.utils.formats import get_format
+
 
 
 class Order(models.Model):
+    my_formats = get_format('DATETIME_FORMAT')
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)

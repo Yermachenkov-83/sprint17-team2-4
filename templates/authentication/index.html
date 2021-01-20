@@ -37,9 +37,9 @@
                         <td>{{ user.first_name }}</td>
                         <td>{{ user.middle_name }}</td>
 <td>
-            <a href="{%url 'edit' user.id%}"><button type="button" class="btn btn-link">Edit</button><a/>
+            <a href="{%url 'edit_user' user.id%}"><button type="button" class="btn btn-link">Edit</button><a/>
             <br>
-            <form action="{% url 'delete' user.id %}" method="post">
+            <form action="{% url 'delete_user' user.id %}" method="post">
     {% csrf_token %}<button type="submit" class="btn btn-link">Delete</button></form>
                         </td>
 </tr>
@@ -56,6 +56,6 @@
             В библиотеке нет активных пользователей...
         </div>
     {% endif %}
-        <a href="{%url 'create'%}"><button type="button" class="btn btn-primary btn-lg">Add</button></a>
+        <a href="{%url 'create_user'%}"><button type="button" class="btn btn-primary btn-lg">Add</button></a>
     </div>
 {% endblock %}

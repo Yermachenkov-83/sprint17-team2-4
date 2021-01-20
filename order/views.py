@@ -68,7 +68,7 @@ def add_order(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save()
-            redirect("/orders")
+            return redirect("/orders")
         else:
             error = "неверная форма"
     form = OrderForm()
