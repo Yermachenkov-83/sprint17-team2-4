@@ -85,6 +85,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+#USE_L10N = False
+#DATETIME_FORMAT = r'j \d\e F \d\e Y'
+
 
 
 # Password validation
