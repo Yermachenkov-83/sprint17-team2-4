@@ -73,6 +73,7 @@ def add_order(request):
             error = "неверная форма"
     form = OrderForm()
 
+
     data = {
         'form': form,
         'error': error
