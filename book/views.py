@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Book
-from author.models import Author
+from .forms import BookForm
 
 
 def index(request):
@@ -26,4 +26,26 @@ def detail(request, book_id):
         context
     )
 
+def add_book(request, book_id=0):
+    if request.method == 'GET':
+        if book_id == 0:
+            form = BookForm()
+        else:
+            book = Book.objects.get(pk=book_id)
+            form = BookForm(instance=book)
+        return render(request, 'book/add_book.html', {'form': form})
+    else:
+        if book_id == 0:
+            form = BookForm(request.POST)
+        else:
+            book = Book.objects.get(pk=book_id)
+            form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+        return redirect('books')
 
+
+def del_book(request, book_id):
+    book = Book.objects.get(pk=book_id)
+    book.delete()
+    return redirect('books')

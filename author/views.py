@@ -28,3 +28,5 @@ def detail(request, author_id):
         context
     )
 
+def add_author(request, author_id=0):
+    return render(request, 'author/add_author.html')
