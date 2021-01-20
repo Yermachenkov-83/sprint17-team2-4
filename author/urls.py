@@ -1,9 +1,11 @@
+
 from django.urls import path
-from django.urls import path
-from . import views
+from .views import *
 
 urlpatterns = [
-    path('', views.index, name='authors'),
-    path('/<int:author_id>', views.detail, name='author'),
-    path('/add_author', views.add_author, name='add_author'),
+    path('', index, name='authors'),
+    path('/<int:author_id>', detail, name='author'),
+    path('/add_author', add_author, name='add_author'),
+    path('add_author/<int:author_id>', add_author, name='add_author'),
+    path('delete/<int:author_id>', del_author, name='del_author')
 ]

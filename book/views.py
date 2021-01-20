@@ -5,7 +5,6 @@ from .forms import BookForm
 
 def index(request):
     books = Book.objects.order_by('-id')
-
     return render(
         request,
         'book/index.html',
@@ -19,7 +18,6 @@ def detail(request, book_id):
         'title': f'Книга "{book.name}"',
         'book': book
     }
-
     return render(
         request,
         'book/detail.html',
